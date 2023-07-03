@@ -1,0 +1,9 @@
+body {
+   background-color: rgb(245,245,247);
+   text-align: center;
+}
+
+#dtoListDiv {
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+}

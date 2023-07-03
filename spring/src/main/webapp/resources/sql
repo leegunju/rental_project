@@ -1,0 +1,45 @@
+<<<<<<< HEAD
+2023.06.28 Customer
+
+=======
+2023-06-27
+dbname: springproject
+id: springuser
+pw: mysql
+
+create table product(
+pno int auto_increment,
+type_a varchar(100) not null,
+pname varchar(100) not null,
+price int not null,
+content text,
+count int default 0,
+primary key(pno));
+
+2023-06-28
+>>>>>>> jiho
+create table customer(
+cid varchar(100) not null,
+cname varchar(10) not null,
+cpw varchar(100) not null,
+cage int not null,
+cgender varchar(5) not null,
+cnick_name varchar(10) not null,
+cemail varchar(50) not null,
+ctel int not null,
+cadd varchar(100) not null,
+cdate datetime default now(),
+<<<<<<< HEAD
+primary key(cid))
+=======
+primary key(cid));
+
+create table file(
+uuid varchar(256) not null,
+save_dir varchar(256) not null,
+file_name varchar(256) not null,
+file_type tinyint(1) default 0,
+file_size int,
+pno int,
+primary key(uuid));
+>>>>>>> jiho
