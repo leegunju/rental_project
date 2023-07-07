@@ -13,5 +13,10 @@
 	<select id="selectPno" resultType="int">
 		select max(pno) from product
 	</select>
-	
+	<select id="isThere" resultType="com.myweb.www.domain.ProductVO">
+		select * from product
+	</select>
+	<select id="getDetail" resultType="com.myweb.www.domain.ProductVO">
+		select * from product where pno=#{pno}
+	</select>
 </mapper>

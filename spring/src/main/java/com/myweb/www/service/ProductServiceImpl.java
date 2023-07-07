@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import com.myweb.www.domain.FileVO;
 import com.myweb.www.domain.ProductDTO;
 import com.myweb.www.domain.ProductVO;
-import com.myweb.www.domain.RentalsVO;
 import com.myweb.www.repository.FileDAO;
 import com.myweb.www.repository.ProductDAO;
 
@@ -63,5 +62,33 @@ public class ProductServiceImpl implements ProductService {
 		}
 		return dtoList;
 	}
+
+	@Override
+	public List<ProductVO> isThere() {
+		log.info(">>> product isThere in");
+		return pdao.isThere();
+	}
+
+	@Override
+	public ProductDTO getDetail(int pno) {
+		log.info(">>> product getDetail in");
+		ProductVO product = pdao.getDetail(pno);
+		List<FileVO> fileList = fdao.getFileList(product.getPno());
+		ProductDTO pdto = new ProductDTO(product, fileList);
+		return pdto;
+	}
+
+	@Override
+	public int removeFile(String uuid) {
+		log.info(">>> product removeFile in");
+		return fdao.removeFile(uuid);
+	}
+
+//	@Override
+//	public int modify(ProductDTO pdto) {
+//		log.info(">>> product modify in");
+//		ProductVO product = pdao.modifyPvo(pdto.getPvo());
+//		List<FileVO> fileList = fdao.modifyFile(uuid);
+//	}
 
 }

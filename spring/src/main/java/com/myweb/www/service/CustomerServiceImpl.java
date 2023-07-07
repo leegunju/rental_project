@@ -22,12 +22,22 @@ public class CustomerServiceImpl implements CustomerService{
 	BCryptPasswordEncoder passwordencoder;
 	
 	@Override
-	public int join(CustomerVO cvo) {
+    public int join(CustomerVO cvo) {
 		log.info("회원가입 서비스 진입");
+		CustomerVO tempUser = cdao.getUser(cvo);
+		if(tempUser != null) {
+			return 0;
+		}
+		if(cvo.getCid() == null || cvo.getCid().length() == 0) {
+			return 0;
+		}
+		if(cvo.getCpw() == null || cvo.getCpw().length() == 0) {
+			return 0;
+		}
 		int isOk = cdao.join(cvo);
 		log.info("isOk : "+isOk);
 		return isOk;
-	}
+   }
 
 
 	@Override

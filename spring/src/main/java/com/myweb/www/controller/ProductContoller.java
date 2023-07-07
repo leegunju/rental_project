@@ -4,9 +4,14 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,10 +43,20 @@ public class ProductContoller {
 	}
 	
 	@PostMapping("/register")
-	public String postRegister(ProductVO pvo, RedirectAttributes ra,
+	public String postRegister(Model m, ProductVO pvo, RedirectAttributes ra,
 			@RequestParam(name="files", required=false)MultipartFile[] files) {
 		log.info(">>> pvo > " + pvo.toString());
 		log.info(">>> files > " + files.toString());
+		
+		List<ProductVO> isThere = psv.isThere();
+		for(ProductVO p : isThere) {
+			String existingName = p.getPname();
+			if(existingName.equals(pvo.getPname())) {
+				m.addAttribute("thereis", 1);
+				return "/product/register";
+			}
+		}
+		
 		List<FileVO> flist = null;
 		
 		if(files[0].getSize()>0) {
@@ -64,4 +79,36 @@ public class ProductContoller {
 		return "/product/list";
 	}
 	
+	@GetMapping("/adminList")
+	public String getAdminList(Model m) {
+		List<ProductVO> list = psv.isThere();
+		m.addAttribute("adminList", list);
+		return "/product/adminList";
+	}
+	
+	@GetMapping("/modify")
+	public void detail(Model m, @RequestParam("pno")int pno) {
+		log.info(">>> pno > " + pno);
+		ProductDTO pdto = psv.getDetail(pno);
+		m.addAttribute("product", pdto);
+	}
+	
+//	@PostMapping("/modify")
+//	public String modify(RedirectAttributes ra, ProductDTO pdto) {
+//		log.info(">>> pdto > " + pdto.toString());
+//		int isOk = psv.modify(pdto);
+//		log.info(">>> Product Modify > " + (isOk > 0 ? "Success" : "Fail"));
+//		return "redirect:/product/adminList";
+//	}
+	
+//	@DeleteMapping(value="/file/{uuid}", produces= {MediaType.TEXT_PLAIN_VALUE})
+//	public ResponseEntity<String> removeFile(@PathVariable("uuid") String uuid) {
+//		log.info(">>> uuid > " + uuid);
+//		return psv.removeFile(uuid) > 0 ?
+//				new ResponseEntity<String>("1", HttpStatus.OK)
+//				 : new ResponseEntity<String>("0", HttpStatus.INTERNAL_SERVER_ERROR);
+//	}
+	
 }
+	
+

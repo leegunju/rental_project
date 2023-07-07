@@ -62,3 +62,44 @@ window.onload = function(){
         });
     });
 }
+
+function validateButton(event) { 
+    var pnameInput = document.querySelector('input[name="pname"]');
+    var pnameError = document.getElementById("pnameError");
+    var priceInput = document.querySelector('input[name="price"]');
+    var priceError = document.getElementById("priceError");
+    var contentTextarea = document.querySelector('textarea[name="content"]');
+    var countInput = document.querySelector('input[name="count"]');
+    var countError = document.getElementById("countError");
+    var isFormValid = true; // 폼 유효성 검사 결과
+    console.log(isFormValid);
+    if (pnameInput.value.trim() === "") {
+        isFormValid = false;
+        pnameError.style.display = "block";
+    } else {
+        pnameError.style.display = "none";
+    }
+    
+    if (priceInput.value.trim() === "" || isNaN(priceInput.value)) {
+        isFormValid = false;
+        priceError.style.display = "block";
+    } else {
+        priceError.style.display = "none";
+    }
+    
+    if (contentTextarea.value.trim() === "") {
+        isFormValid = false;
+    }
+    
+    if (countInput.value.trim() === "" || isNaN(countInput.value)) {
+        isFormValid = false;
+        countError.style.display = "block";
+    } else {
+        countError.style.display = "none";
+    }
+    console.log(isFormValid);
+    // 폼 전송 막기
+    if (!isFormValid) {
+        event.preventDefault(); 
+    }
+}

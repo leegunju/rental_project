@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Log In Page</title>
-<link rel="stylesheet" href="/resources/css/login.css">
+<link rel="stylesheet" href="/resources/css/user/login.css">
 </head>
 <body>
     <form action="/user/login" method="post">

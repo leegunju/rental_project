@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.myweb.www.domain.AdminVO;
 import com.myweb.www.domain.CustomerVO;
@@ -33,18 +34,19 @@ public class CustomerController {
 		return "/user/signup";
 	}
 	
-	@PostMapping("/signup")
-	public String joinPost(Model m, CustomerVO cvo) {
-		log.info("회원가입 시작");
-		log.info("나옴?"+cvo.getCadd());
-	        int isOk = csv.join(cvo);
-	        if (isOk > 0) {
-	            m.addAttribute("msg_signup", 1);
-	        } else {
-	            m.addAttribute("msg_signup", 0);
-	        }
-	        return "home";
-	    }
+   @PostMapping("/signup")
+   public String joinPost(Model m, CustomerVO cvo) {
+      log.info("회원가입 시작");
+           int isOk = csv.join(cvo);
+           if (isOk > 0) {
+               m.addAttribute("signupFail", 0);
+               return "home";
+               
+           } else {
+               m.addAttribute("signupFail", 1);
+               return "/user/signup";
+           }
+    }
 
 	@GetMapping("/login")
 	public String loginGet() {
@@ -68,18 +70,37 @@ public class CustomerController {
 		}
 	}
 	
+	@GetMapping("/logout")
+	public String logout(Model m, HttpServletRequest request) {
+		request.getSession().removeAttribute("ses");
+		request.getSession().invalidate();
+		m.addAttribute("logout", 1);
+		return "home";
+	}
+	
 	@GetMapping("/modify")
 	public String modifyGet() {
 		return "/user/modify";
 	}
 	
 	@PostMapping("/modify")
-	public String modifyPost(Model m, CustomerVO cvo) {
+	public String modifyPost(Model m, CustomerVO cvo,
+			HttpServletRequest request) {
 		log.info("회원 정보 수정 진입");
-		
-		int isUser = csv.modify(cvo);
-		
-		return "home";
+		m.addAttribute("modifyFail", 0);
+		log.info("modifyFail"+m);
+		int isOk = csv.modify(cvo);
+		if(isOk > 0) {
+			m.addAttribute("modifyFail", 2);
+            request.getSession().invalidate();
+            log.info("modifyFail"+m);
+            return "home";
+			
+		}else {
+			m.addAttribute("modifyFail", 1);
+			log.info("modifyFail"+m);
+			return "/user/modify";
+        }
 	}
 	
 	@GetMapping("/delete")
@@ -88,10 +109,23 @@ public class CustomerController {
 	}
 	
 	@PostMapping("/delete")
-	public String deletePost(CustomerVO cvo) {
+	public String deletePost(Model m, CustomerVO cvo,
+			HttpServletRequest request) {
+		m.addAttribute("deleteFail", 0);
+		log.info("deleteFail"+m);
 		log.info("회원 정보 삭제 진입");
 		int isOk = csv.delete(cvo);
-		return "home";
+		if(isOk > 0) {
+			m.addAttribute("deleteFail", 2);
+            request.getSession().invalidate();
+            log.info("deleteFail"+m);
+            return "home";
+			
+		}else {
+			m.addAttribute("deleteFail", 1);
+			log.info("deleteFail"+m);
+			return "/user/delete";
+        }
 	}
 	
 }

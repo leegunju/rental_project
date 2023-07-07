@@ -38,5 +38,14 @@
         <input type="text" id="cadd" name="cadd" placeholder="주소 입력"><br>
         <button type="submit">회원 정보 수정</button>
 	</form>
+	
+	<script type="text/javascript">
+	    const modifyFail = '<c:out value="${modifyFail}"/>';
+	    console.log(modifyFail); 
+		
+	    if(modifyFail == 1){
+	        alert("아이디 혹은 비밀번호를 확인해주세요")   
+	    }
+	</script>
 </body>
 </html>

@@ -13,4 +13,12 @@ public interface ProductService {
 
 	List<ProductDTO> getDTOList(String type_a);
 
+	List<ProductVO> isThere();
+
+	ProductDTO getDetail(int pno);
+
+	int removeFile(String uuid);
+
+//	int modify(ProductDTO pdto);
+
 }

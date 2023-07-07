@@ -12,4 +12,8 @@ public interface ProductDAO {
 
 	int selectPno();
 
+	List<ProductVO> isThere();
+
+	ProductVO getDetail(int pno);
+
 }

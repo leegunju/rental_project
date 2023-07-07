@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Sign Up Page</title>
 <script src="https://kit.fontawesome.com/e927512ef5.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="/resources/css/signup.css">
+<link rel="stylesheet" href="/resources/css/user/signup.css">
 </head>
 <body>
     <div class="a">
@@ -58,6 +58,6 @@
             <a href="https://discord.com/login"><i class="fa-brands fa-discord" style="color: #000000;"></i></a>
         </div>
     </footer>
-    <script src="/resources/js/signup.js"></script>
+    <script src="/resources/js/user/signup.js"></script>
 </body>
 </html>

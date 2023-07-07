@@ -57,7 +57,7 @@ public class FileHandler {
 				if(isImageFile(storeFile)) {
 					fvo.setFile_type(1);
 					File thumbNail = new File(folders, uuid.toString()+"_th_"+onlyFileName);
-					Thumbnails.of(storeFile).size(75, 75).toFile(thumbNail);
+					Thumbnails.of(storeFile).size(348, 377).toFile(thumbNail);
 				}
 			} catch (Exception e) {
 				log.info(">>> file 생성 오류 > ");

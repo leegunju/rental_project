@@ -1,24 +1,12 @@
-/* header */
 body{
-<<<<<<< HEAD
-    background-color: #F9F9F9;
-}
-=======
     background-color: white;
 }
-.info, .search{
-    margin-top: 20px;
-}
-
->>>>>>> jiho
 a{
     text-decoration: none;
 }
+/* header */
 .logo img{
-<<<<<<< HEAD
     margin-top: 20px;
-=======
->>>>>>> jiho
     width: 250px;
     height: auto;
 }
@@ -57,11 +45,7 @@ a{
 font-weight: normal;
 text-transform: uppercase;
 margin: 0.3125em 0;
-<<<<<<< HEAD
 background-color: #F9F9F9;
-=======
-background-color: white;
->>>>>>> jiho
 position: relative;
 display: inline-block;
 padding: 0 10px;
@@ -69,11 +53,7 @@ color: black;
 }
 .style-3 {
 font-family: "Oswald", sans-serif;
-<<<<<<< HEAD
 color: #F9F9F9;
-=======
-color: white;
->>>>>>> jiho
 }
 .style-3:before {
 content: "";
@@ -94,21 +74,15 @@ bottom: 35%;
 left: -100%;
 z-index: -999;
 }
-<<<<<<< HEAD
 .info, .search{
     margin-top: 20px;
 }
-=======
->>>>>>> jiho
 .info>a{
 color: black;
 top: 0;
 right: 0;
 display: inline-block;
 margin-right: 10px;
-}
-#search{
-color: white;
 }
 span:hover{
 cursor: pointer;
@@ -158,22 +132,32 @@ text-align: center;
     cursor: pointer;
 }
 .search {
-position: absolute;
-top: 10px;
-right: 50px;
+    position: absolute;
+    top: 10px;
+    right: 50px;
 }
 #search-input {
-display: none;
-position: absolute;
-top: 0px;
-right: 30px;
-background: white;
-border-radius: .4em;
-padding: 10px;
-color: black;
-border: none;
-width: 200px;
-transition: width 2s; 
+    display: none;
+    position: absolute;
+    top: 0px;
+    right: 30px;
+    background: white;
+    border-radius: .4em;
+    padding: 10px;
+    color: black;
+    border: none;
+    width: 0;
+    transition: width 2s; 
+    box-sizing: border-box;
+    overflow: hidden;
+}
+#search-input.show {
+    display: block;
+}
+.search-input {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.5s;
 }
 /* header end */
 .center-items p{
@@ -226,20 +210,87 @@ video{
     color: white;
 }
 .video-box-btn>a:hover{
-<<<<<<< HEAD
     color: black;
+}
+/* 모달창 */
+#info-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all 0.5s;
+    z-index: 9999;
+}
+
+.modal {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: white;
+    color: black;
+    padding: 50px;
+    text-align: center;
+    border: 1px solid #888;
+    display: none;
+    width: 200px;
+    height: 200px;
+    overflow: auto;
+    border-radius: 30px;
+    transition: all 0.5s;
+    z-index: 10000; 
+}
+
+
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;  /* Control the size of the modal here */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+#close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #000;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#close-button:hover,
+#close-button:focus {
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
 }
 /* footer */
 .footer {
-    background-color: #F9F9F9;
-    height: 85px;
+    background-color: white;
+    height: 15%;
     width: 100%;
     border-top: 2px solid;
-    display: flex;
+    display: none;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
     box-sizing: border-box;
+    position: fixed;
+    bottom: 0;
+    max-height: 100px;
 }
 
 .ft-logo, .footinfo, .footsns {
@@ -264,10 +315,139 @@ video{
 }
 
 main {
-    padding-bottom: 40px;
+    padding-bottom: 40px; 
 }
 /* footer end */
-=======
-    color: blueviolet;
+
+/* 관리자 모달창 */
+.modal-left {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: white;
+    color: black;
+    padding: 50px;
+    text-align: center;
+    border: 1px solid #888;
+    display: block;
+    width: 200px;
+    height: auto;
+    overflow: auto;
+    border-radius: 30px;
+    transition: all 0.5s;
+    z-index: 10000;
 }
->>>>>>> jiho
+
+.modal-buttons-left {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 50px;
+}
+
+.modal-btn-left {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px; 
+    transition: all 0.5s;
+}
+
+.modal-btn-left:hover {
+    background-color: #888;
+    color: black;
+}
+.floating-admin {
+    position: fixed;
+    bottom: 70px;
+    left: 20px;
+    z-index: 10000;
+}
+#admin-button-left:hover {
+    background-color: #555; 
+    transform: scale(1.1);
+    cursor: pointer;
+}
+#close-button-admin-left{
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #000;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+#close-button-admin-left:hover,
+#cclose-button-admin-left:focus{
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* section */
+section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* 가운데 정렬 */
+    width: 100%;
+    padding: 0; /* 섹션 내부 패딩 추가 */
+}
+
+article {
+    flex-basis: calc(100% - 25px); /* 너비 조절: 15% 증가 */
+    margin: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 230px; /* 최소 높이 조절: 15% 증가 */
+    background-color: white; /* 배경색 추가 */
+    border-radius: 10px; /* border 둥글게 */
+}
+
+div.desc {
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+    justify-content: center;
+    padding: 0; /* 패딩 추가 */
+    flex-direction: row; /* 추가: 가로 정렬 */
+}
+
+div.desc > * {
+    flex-basis: calc(100% / 4 - 20px); /* 요소들을 가로로 배열 */
+    margin: 10px;
+    box-sizing: border-box;
+    padding: 0; /* 패딩 추가 */
+    border-radius: 5px; /* border 둥글게 */
+    font-size: 18px; /* 글자 크기 조절 */
+}
+
+div.desc > *:hover{
+    border: 1px solid #0088cc;
+}
+
+div.desc a{
+    color: black;
+}
+
+.inner {
+    text-align: center;
+}
+
+.icon {
+    margin: auto;
+}
+
+.icon img {
+    display: block;
+    margin: auto;
+}
+
