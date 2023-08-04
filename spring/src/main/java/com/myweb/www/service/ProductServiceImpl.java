@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.myweb.www.domain.FileVO;
+import com.myweb.www.domain.PagingVO;
 import com.myweb.www.domain.ProductDTO;
 import com.myweb.www.domain.ProductVO;
 import com.myweb.www.repository.FileDAO;
@@ -84,11 +85,62 @@ public class ProductServiceImpl implements ProductService {
 		return fdao.removeFile(uuid);
 	}
 
-//	@Override
-//	public int modify(ProductDTO pdto) {
-//		log.info(">>> product modify in");
-//		ProductVO product = pdao.modifyPvo(pdto.getPvo());
-//		List<FileVO> fileList = fdao.modifyFile(uuid);
-//	}
+	@Override
+	public int getTotalCount(PagingVO pgvo) {
+		log.info(">>> product getTotalCount in");
+		return pdao.getTotalCount(pgvo);
+	}
+
+	@Override
+	public List<ProductVO> getAdminList(PagingVO pgvo) {
+		log.info(">>> product getAdminList in");
+		return pdao.getAdminList(pgvo);
+	}
+
+	@Override
+	public int modifyDTO(ProductDTO pdto) {
+	    log.info(">>> product modify in");
+	    log.info(">>> pdto.pvo " + pdto.getPvo().toString());
+	    log.info(">>> pdto.flist " + pdto.getFlist().toString());
+	    int isOk=1;
+	    	isOk = pdao.updateProduct(pdto.getPvo());
+	    	log.info(">>> isOk > " + isOk);
+	    	if(pdto.getFlist() == null) {
+	 		   isOk *= 1;
+	 	   } else {
+	 		   if(isOk > 0 && pdto.getFlist().size() > 0) {
+	 			   int pno = pdto.getPvo().getPno();
+	 			   log.info(">>> pno > " + pno);
+	 			   for(FileVO fvo : pdto.getFlist()) {
+	 				   fvo.setPno(pno);
+	 				   log.info(">>> insert file > " + fvo.toString());
+	 				   isOk *= fdao.insertFile(fvo); //여기서 맵퍼로 저장을 못한다
+	 				   //수정시 pvo수정됨, image도 폴더내 저장됨, 
+	 			    }
+	 		   }
+	 	   }
+	  
+	    return isOk;
+	}
+
+	@Override
+	public List<ProductDTO> searchDTOList(String searchKeyword) {
+		log.info(">>> product Seach List in");
+		log.info(">>> Search Keyword > " + searchKeyword);
+		List<ProductVO> productList = pdao.getSearchList(searchKeyword);
+		List<ProductDTO> dtoList = new ArrayList<>();
+		for(ProductVO product : productList) {
+			List<FileVO> fileList = fdao.getFileList(product.getPno());
+			ProductDTO dto = new ProductDTO(product, fileList);
+			dtoList.add(dto);
+		}
+		return dtoList;
+	}
+
+	@Override
+	public int delete(int pno) {
+		log.info("product delete in");
+		return pdao.delete(pno);
+	}
 
 }

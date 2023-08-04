@@ -18,4 +18,5 @@ public class FileVO {
 	private int file_type;
 	private long file_size;
 	private int pno;
+	private int fileCategoryNum;
 }

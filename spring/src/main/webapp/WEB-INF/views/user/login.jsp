@@ -20,5 +20,12 @@
         </div>
         <button type="submit" class="btn btn-dark">Log In</button>
     </form>
+    <script type="text/javascript">
+       const loginFail = '<c:out value="${loginFail}"/>';
+       console.log(loginFail);
+       if(loginFail === "1"){
+           alert("아이디 혹은 비밀번호를 확인해주세요");   
+       }
+   </script>
 </body>
 </html>

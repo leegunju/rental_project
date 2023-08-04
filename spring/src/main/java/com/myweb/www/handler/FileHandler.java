@@ -22,8 +22,7 @@ import net.coobird.thumbnailator.Thumbnails;
 @Component
 public class FileHandler {
 	private final String UP_DIR = "D:\\_myweb\\_java\\fileUpload";
-	
-	public List<FileVO> uploadFiles(MultipartFile[] files) {
+	public List<FileVO> uploadFiles(MultipartFile[] files, int fileCategoryNum) {
 		LocalDate date = LocalDate.now();
 		log.info(">>> date > " + date);
 		String today = date.toString();
@@ -45,6 +44,11 @@ public class FileHandler {
 					originalFileName.lastIndexOf(File.separator)+1);
 			log.info(">>> onlyFileName > " + onlyFileName);
 			fvo.setFile_name(onlyFileName);
+			fvo.setFileCategoryNum(fileCategoryNum);
+			fileCategoryNum++;
+			if(fileCategoryNum >= 3) {
+				fileCategoryNum = 0;
+			}
 			
 			UUID uuid = UUID.randomUUID();
 			fvo.setUuid(uuid.toString());
@@ -57,7 +61,7 @@ public class FileHandler {
 				if(isImageFile(storeFile)) {
 					fvo.setFile_type(1);
 					File thumbNail = new File(folders, uuid.toString()+"_th_"+onlyFileName);
-					Thumbnails.of(storeFile).size(348, 377).toFile(thumbNail);
+					Thumbnails.of(storeFile).size(347, 377).toFile(thumbNail);
 				}
 			} catch (Exception e) {
 				log.info(">>> file 생성 오류 > ");

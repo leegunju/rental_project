@@ -19,9 +19,11 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.myweb.www.domain.FileVO;
+import com.myweb.www.domain.PagingVO;
 import com.myweb.www.domain.ProductDTO;
 import com.myweb.www.domain.ProductVO;
 import com.myweb.www.handler.FileHandler;
+import com.myweb.www.handler.PagingHandler;
 import com.myweb.www.service.ProductService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -47,7 +49,6 @@ public class ProductContoller {
 			@RequestParam(name="files", required=false)MultipartFile[] files) {
 		log.info(">>> pvo > " + pvo.toString());
 		log.info(">>> files > " + files.toString());
-		
 		List<ProductVO> isThere = psv.isThere();
 		for(ProductVO p : isThere) {
 			String existingName = p.getPname();
@@ -58,9 +59,9 @@ public class ProductContoller {
 		}
 		
 		List<FileVO> flist = null;
-		
+		int fileCategoryNum = 0;
 		if(files[0].getSize()>0) {
-			flist = fhd.uploadFiles(files);
+			flist = fhd.uploadFiles(files, fileCategoryNum);
 		} else {
 			log.info("file null");
 		}
@@ -68,7 +69,7 @@ public class ProductContoller {
 		int isOk = psv.register(pdto);
 		log.info("제품 등록" + (isOk > 0 ? "성공" : "실패"));
 		ra.addFlashAttribute("isOk", isOk);
-		return "redirect:/";
+		return "redirect:/home";
 	}
 	
 	@GetMapping("/list")
@@ -80,9 +81,12 @@ public class ProductContoller {
 	}
 	
 	@GetMapping("/adminList")
-	public String getAdminList(Model m) {
-		List<ProductVO> list = psv.isThere();
+	public String getAdminList(Model m, PagingVO pgvo) {
+		List<ProductVO> list = psv.getAdminList(pgvo);
 		m.addAttribute("adminList", list);
+		int totalCount = psv.getTotalCount(pgvo);
+		PagingHandler ph = new PagingHandler(pgvo, totalCount);
+		m.addAttribute("ph", ph);
 		return "/product/adminList";
 	}
 	
@@ -93,21 +97,54 @@ public class ProductContoller {
 		m.addAttribute("product", pdto);
 	}
 	
-//	@PostMapping("/modify")
-//	public String modify(RedirectAttributes ra, ProductDTO pdto) {
-//		log.info(">>> pdto > " + pdto.toString());
-//		int isOk = psv.modify(pdto);
-//		log.info(">>> Product Modify > " + (isOk > 0 ? "Success" : "Fail"));
-//		return "redirect:/product/adminList";
-//	}
+	@PostMapping("/modify")
+	public String modify(RedirectAttributes ra, ProductVO pvo, @RequestParam(name="files", required=false)MultipartFile[] files) {
+		log.info(">>> pvo > " + pvo.toString());
+		log.info(">>> files > " + files.toString());
+		List<FileVO> flist = null;
+		int fileCategoryNum = 0;
+		if(files[0].getSize()>0) {
+			flist = fhd.uploadFiles(files, fileCategoryNum);
+		}
+		ProductDTO pdto = new ProductDTO(pvo, flist);
+		int isOk = psv.modifyDTO(pdto);
+		log.info(">>> modify > " + (isOk > 0 ? "success" : "fail"));
+		return "redirect:/product/adminList";
+	}
 	
-//	@DeleteMapping(value="/file/{uuid}", produces= {MediaType.TEXT_PLAIN_VALUE})
-//	public ResponseEntity<String> removeFile(@PathVariable("uuid") String uuid) {
-//		log.info(">>> uuid > " + uuid);
-//		return psv.removeFile(uuid) > 0 ?
-//				new ResponseEntity<String>("1", HttpStatus.OK)
-//				 : new ResponseEntity<String>("0", HttpStatus.INTERNAL_SERVER_ERROR);
-//	}
+	@DeleteMapping(value="/file/{uuid}", produces= {MediaType.TEXT_PLAIN_VALUE})
+	public ResponseEntity<String> removeFile(@PathVariable("uuid") String uuid) {
+		log.info(">>> uuid > " + uuid);
+		return psv.removeFile(uuid) > 0 ?
+				new ResponseEntity<String>("1", HttpStatus.OK)
+				 : new ResponseEntity<String>("0", HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
+	@GetMapping("/detail")
+	public String detailProduct(Model m, @RequestParam("pno")int pno) {
+	    log.info(">>> pno : "+pno);
+	    ProductDTO pdto = psv.getDetail(pno);
+	    m.addAttribute("product", pdto);
+	    return "/product/detail";
+	}
+	
+	@GetMapping("/search")
+	public String search(Model m, @RequestParam(name = "search") String searchKeyword) {
+		log.info(">>> Search Keyword > " + searchKeyword);
+		List<ProductDTO> searchDtoList = psv.searchDTOList(searchKeyword);
+		m.addAttribute("searchKeyword", searchKeyword);
+		m.addAttribute("searchDtoList", searchDtoList);
+		log.info(">>> searchDtoList > " + searchDtoList);
+		return "/product/searchResult";
+	}
+	
+	@PostMapping("/delete")
+	public String delete(RedirectAttributes ra, @RequestParam(name = "pno") int pno) {
+		log.info(">>> delete pno > " + pno);
+		int isOk = psv.delete(pno);
+		log.info("Delete" + (isOk > 0 ? "Success" : "Fail"));
+		return "redirect:/product/adminList";
+	}
 	
 }
 	

@@ -1,0 +1,148 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+body {
+  margin: 0px;
+}
+.a {
+  height: 20px;
+  position: relative;
+}
+div {
+  margin: 0 auto;
+  padding: 0;
+}
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1 {
+  text-align: center;
+}
+p {
+  font-weight: bold;
+}
+td {
+  border-bottom: 1px solid gray;
+}
+#main {
+  text-align: center;
+  padding-top: 100px;
+}
+/* 고객센터 구역 */
+#leftBox {
+  padding-left: 50px;
+  float: left;
+  margin-top: 50px;
+}
+#leftBox > #telephone {
+  font-size: 50px;
+}
+#leftBox > h3 {
+  display: inline-block;
+  padding-left: 10px;
+  border-bottom: 3px solid orange;
+}
+/* 1:1문의 구역 */
+#rightBox {
+  display: inline-block;
+  margin-top: 50px;
+  padding-left: 100px;
+}
+#rightBox > #pen {
+  font-size: 50px;
+}
+#rightBox > h3 {
+  display: inline-block;
+  padding-left: 10px;
+  border-bottom: 3px solid orange;
+}
+/* 문의하기 */
+#ask {
+  cursor: pointer;
+  border: 1px solid orange;
+  color: orange;
+  font-weight: bold;
+  margin-left: 10px;
+}
+/* 고객센터, 문의를 담고 있는 박스 */
+#sBox {
+  background-color: rgb(233, 233, 233);
+  width: 1100px;
+  height: 300px;
+  margin: auto;
+  margin-bottom: 100px;
+}
+/* 예매방법, 수수료 등 박스 */
+#list {
+  margin: auto;
+  width: 1400px;
+}
+#list > a {
+  border: 1px solid gray;
+  width: 200px;
+  height: 50px;
+  display: inline-block;
+  line-height: 50px;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  color: black;
+}
+#list > a:hover {
+  color: white;
+  font-weight: bold;
+  background-color: orangered;
+}
+
+hr {
+  padding-top: 20;
+  width: 1100px;
+  text-align: center;
+}
+#readMain {
+  margin: auto;
+  width: 1400px;
+}
+#readMain > h1 {
+  padding-top: 50px;
+}
+#readMain > div {
+  padding: 50px;
+}
+
+.remoteBox{
+   padding-top: 100px;
+   margin-bottom: 200px;
+}
+.remote{
+   display: inline-block;
+}
+#tvBox, #internetBox, #telBox{
+   line-height: 60px;
+   width: 60%;
+}
+#internetBox{
+   width: 60%;
+   height: 800px;
+}
+/* #internetBox > h1{
+   padding-top: 100px;
+} */
+
+#rentalBox{
+   line-height: 40px;
+   margin-bottom: 200px;
+   text-align: center;
+   width: 60%;
+}
+#telBox{
+   text-align: center;
+}
+.remoteImg{
+   width: 100%;
+}

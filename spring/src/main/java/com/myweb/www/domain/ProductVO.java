@@ -17,5 +17,4 @@ public class ProductVO {
 	private String pname; //모델명
 	private int price; // 가격
 	private String content; // 제품 상세 정보
-	private int count; // 재고 count가 0이면 model로 품절표시
 }

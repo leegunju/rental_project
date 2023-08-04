@@ -11,7 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.myweb.www.domain.CalenderVO;
 import com.myweb.www.domain.ConsultVO;
 import com.myweb.www.domain.CustomerVO;
 import com.myweb.www.domain.ProductVO;
@@ -57,5 +60,18 @@ public class ConsultController {
 		m.addAttribute("adminList", list);
 		return "/consult/adminList";
 	}
+	
+	@GetMapping("csCenter")
+	public String csCenter() {
+		return "/consult/csCenter";
+	}
+	
+	@GetMapping("check")
+	   public String check(@RequestParam("csno") int csno, RedirectAttributes ra) {
+	      log.info(">>> csno > " + csno);
+	      int isOk = cssv.consultUpdate(csno);
+	      log.info("Consult Update" + (isOk > 0 ? "Success" : "Fail"));
+	      return "redirect:/consult/adminList";
+	   }
 	
 }
