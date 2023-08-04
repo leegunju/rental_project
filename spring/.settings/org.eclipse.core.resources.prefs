@@ -1,0 +1,9 @@
+<<<<<<< HEAD
+eclipse.preferences.version=1
+encoding//src/main/webapp/WEB-INF/views/info.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/product/adminList.jsp=UTF-8
+=======
+eclipse.preferences.version=1
+encoding//src/main/webapp/WEB-INF/views/home.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/product/adminList.jsp=UTF-8
+>>>>>>> 763658bbd707cf8f6210e039ed0846155792dc62

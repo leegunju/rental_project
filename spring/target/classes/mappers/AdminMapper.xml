@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myweb.www.repository.adminDAO">
+
+	<select id="getAllEvents"
+		resultType="com.myweb.www.domain.CalenderVO">
+		SELECT * FROM calendarevent
+	</select>
+
+	<update id="updateEvent">
+		UPDATE calendarevent
+		SET status = #{status}
+		WHERE
+		event_num = #{event_num}
+	</update>
+
+	<insert id="saveUnavailableDate"
+		parameterType="com.myweb.www.domain.CalenderVO">
+		INSERT INTO admin_calendarevent (event_num, date, time,
+		status)
+		VALUES (#{event_num}, #{date}, #{time}, '선택불가')
+	</insert>
+
+	<select id="getAdminCalenderEvents"
+		resultType="com.myweb.www.domain.CalenderVO">
+		SELECT * FROM admin_calendarevent
+	</select>
+
+
+</mapper>

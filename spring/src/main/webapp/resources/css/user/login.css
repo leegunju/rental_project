@@ -1,0 +1,178 @@
+<<<<<<< HEAD
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    padding: 20px;
+    background: #F9F9F9;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+form {
+    width: 300px;
+=======
+* {
+    font-family: 'Bebas Neue', sans-serif;
+    color: #555;
+}
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #fbfbfd;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+nav ul li a:hover {
+    color: #007AFF;
+}
+
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 50px);
+>>>>>>> 763658bbd707cf8f6210e039ed0846155792dc62
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.form-control {
+<<<<<<< HEAD
+=======
+    width: 243px;
+>>>>>>> 763658bbd707cf8f6210e039ed0846155792dc62
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+    font-size: 1.2em;
+    padding: 5px 0;
+    transition: border-bottom 0.3s;
+}
+
+.form-label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #ccc;
+    transition: all 0.3s;
+}
+
+.form-control:focus {
+    border-bottom: 1px solid #007AFF;
+}
+
+.form-control:focus + .form-label,
+.form-control:not(:placeholder-shown) + .form-label {
+    transform: translateY(-20px);
+    font-size: 0.8em;
+    color: #007AFF;
+}
+
+.btn-dark {
+    background-color: #007AFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    width: 243px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-size: 1.2em;
+}
+
+.btn-dark:hover {
+    background-color: #0056b3;
+<<<<<<< HEAD
+=======
+}
+
+/* footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
+
+.footer div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footinfo, .footsns {
+    flex-direction: row;
+    gap: 10px;
+}
+
+.footsns a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footsns a:hover {
+    color: #0056b3;
+}
+
+.ft-logo img, .footinfo h6 {
+    font-size: 0.8em;
+    color: #aaa;
+}
+
+.ft-logo{
+    margin-right: 5px;
+}
+
+.gender-selection {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.gender-icon {
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.gender-icon.selected {
+    color: #007AFF;
+}
+.ft-logo{
+    margin-right: 10px;
+}
+.footsns{
+    text-align: center;
+>>>>>>> 763658bbd707cf8f6210e039ed0846155792dc62
+}
