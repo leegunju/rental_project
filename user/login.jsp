@@ -1,0 +1,156 @@
+<<<<<<< HEAD
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Log In Page</title>
+<link rel="stylesheet" href="/resources/css/user/login.css">
+</head>
+<body>
+    <form action="/user/login" method="post">
+        <div class="form-group">
+            <input type="text" class="form-control" name="cid" id="exampleFormControlInput1" placeholder=" ">
+            <label for="exampleFormControlInput1" class="form-label">Please Enter your ID</label>
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" name="cpw" id="exampleFormControlInput2" placeholder=" ">
+            <label for="exampleFormControlInput2" class="form-label">Please Enter your PW</label>
+        </div>
+        <button type="submit" class="btn btn-dark">Log In</button>
+    </form>
+    <script type="text/javascript">
+       const loginFail = '<c:out value="${loginFail}"/>';
+      console.log(loginFail);
+       if(loginFail === "1"){
+           alert("아이디 혹은 비밀번호를 확인해주세요");   
+       }
+   </script>
+</body>
+=======
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Log In Page</title>
+<script src="https://kit.fontawesome.com/e927512ef5.js"
+	crossorigin="anonymous"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet" href="/resources/css/user/login.css">
+<link rel="stylesheet" href="/resources/css/HF.css">
+</head>
+<body>
+	<header>
+		<div class="container">
+			<div class="header">
+				<div class="logo-title">
+					<a href="#"> <img src="/resources/img/images.png" alt="">
+					</a>
+					<h1 class="title" style="color: #555;">OK Rental</h1>
+				</div>
+				<!-- 우측에 위치 -->
+				<div class="header-right">
+					<div class="info">
+						<i class="fa-sharp fa-solid fa-user fa-xl" style="color: #555;"
+							onclick="toggleTooltip();"></i>
+						<div id="tooltip" class="speech-bubble">
+							<a href="/signup.html">회원가입</a> <br> <a href="/login.html">로그인</a>
+							<br> <a href="">회원정보수정</a>
+						</div>
+					</div>
+
+					<!-- 230710 서치 -->
+					<div class="search">
+						<span id="search"> <i
+							class="fa-solid fa-magnifying-glass fa-xl" style="color: #555;"></i>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="myOverlay" class="overlay">
+			<span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+			<div class="overlay-content">
+				<form action="#">
+					<div class="search-container">
+						<h1 style="color: white;">Quickly Search Site</h1>
+						<div class="search-box">
+							<input type="text" placeholder="Search.." name="search"
+								class="search-input">
+							<button class="search-box-btn" type="submit" style="color: #555;">Search</button>
+						</div>
+					</div>
+				</form>
+				<div class="quickly">
+					<ul>
+						<li><i class="fa-solid fa-arrow-right fa-xs"
+							style="color: #ffffff;"></i> <a href="">dyson</a></li>
+						<li><i class="fa-solid fa-arrow-right fa-xs"
+							style="color: #ffffff;"></i> <a href=""> lg </a></li>
+						<li><i class="fa-solid fa-arrow-right fa-xs"
+							style="color: #ffffff;"></i> <a href=""> cuckoo </a></li>
+						<li><i class="fa-solid fa-arrow-right fa-xs"
+							style="color: #ffffff;"></i> <a href=""> coway </a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div id="blurryPart" class="blurry-part"></div>
+	</header>
+		<!-- 230710 서치 -->
+	<form action="/user/login" method="post" class="form">
+		<div class="form-group">
+			<input type="text" class="form-control" name="cid"
+				id="exampleFormControlInput1" placeholder=" "> <label
+				for="exampleFormControlInput1" class="form-label">Please
+				Enter your ID</label>
+		</div>
+		<div class="form-group">
+			<input type="password" class="form-control" name="cpw"
+				id="exampleFormControlInput2" placeholder=" "> <label
+				for="exampleFormControlInput2" class="form-label">Please
+				Enter your PW</label>
+		</div>
+		<button type="submit" class="btn btn-dark">Log In</button>
+	</form>
+
+	<footer>
+		<div class="footer">
+			<div class="ft-logo">
+				<img src="/resources/img/images.png" alt="" width="50px"
+					height="50px">
+			</div>
+			<div class="footinfo">
+				<span><h6>©2023 Ok RENTAL. All Rights Reserved.</h6></span> <span><h6>RETURN
+						POLICY</h6></span> <span><h6>TERMS & LEGAL</h6></span> <span><h6>PRIVACY
+						NOTICE</h6></span>
+			</div>
+			<div class="footsns">
+				<a href="https://www.facebook.com/login/?locale=ko_KR"><i
+					class="fa-brands fa-facebook" style="color: #000000;"></i></a> <a
+					href="https://twitter.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoia28ifQ%3D%3D%22%7D"><i
+					class="fa-brands fa-twitter" style="color: #000000;"></i></a> <a
+					href="https://www.instagram.com/"><i
+					class="fa-brands fa-instagram" style="color: #000000;"></i></a> <a
+					href="https://github.com/login"><i class="fa-brands fa-github"
+					style="color: #000000;"></i></a> <a href="https://discord.com/login"><i
+					class="fa-brands fa-discord" style="color: #000000;"></i></a>
+			</div>
+		</div>
+	</footer>
+	<script type="text/javascript" src="/resources/js/user/login.js"></script>
+	<script src="/resources/js/HF.js"></script>
+</body>
+>>>>>>> 763658bbd707cf8f6210e039ed0846155792dc62
+</html>
