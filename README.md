@@ -13,7 +13,6 @@
 <img width="80%" src="https://github.com/leegunju/rental_project/assets/21851358/de8e92ba-3c66-4ce2-9d2f-c78317284295"/><br><br>
 <img width="80%" src="https://github.com/leegunju/rental_project/assets/21851358/9d46dd79-eeb5-44ee-bd8c-50aa3595f1c3"/><br><br>
 <img width="80%" src="https://github.com/leegunju/rental_project/assets/21851358/35743b81-8e9a-4a59-a5ec-dbd917384381"/><br><br>
-<img width="80%" src="https://github.com/leegunju/rental_project/assets/21851358/f7916ad0-b1e2-465a-af64-d44762da64b5"/><br><br>
 <img width="80%" src="https://github.com/leegunju/rental_project/assets/21851358/2c398609-64da-43d7-92ed-571b6688ccfe"/><br><br>
 <img width="80%" src="https://github.com/leegunju/rental_project/assets/21851358/929e80aa-2bfe-4780-982f-346a639b65df"/><br><br>
 <img width="80%" src="https://github.com/leegunju/rental_project/assets/21851358/9f68256e-0516-4ea3-b3ef-57049beee129"/><br><br>
