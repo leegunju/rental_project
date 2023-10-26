@@ -21,6 +21,7 @@
 <img width="80%" src="https://github.com/leegunju/rental_project/assets/21851358/0f7e1060-ccac-4c74-8b58-fb77eab361fd"/><br><br>
 <img width="80%" src="https://github.com/leegunju/rental_project/assets/21851358/1fa5a629-a0e0-4a7a-b1e6-e8d344909fb2"/><br><br>
 <img width="80%" src="https://github.com/leegunju/rental_project/assets/21851358/46bb99a8-6518-427e-9805-433255a9dd71"/><br><br>
+<img width="80%" src="https://github.com/leegunju/rental_project/assets/21851358/66697937-2c4b-4e95-b8c2-a721702af48f"/><br><br>
 <img width="80%" src="https://github.com/leegunju/rental_project/assets/21851358/6a9bd144-53fa-4c0c-bee5-bae4fa0cbd00"/><br><br>
 <img width="80%" src="https://github.com/leegunju/rental_project/assets/21851358/9b172451-c5e6-4c92-add7-71ec8aaaaa99"/><br><br>
 <img width="80%" src="https://github.com/leegunju/rental_project/assets/21851358/daa49771-edc2-4679-b1ce-42d697636146"/><br><br>
