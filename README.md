@@ -1,6 +1,5 @@
 # rental_project
-<img width="80%" src="https://github.com/leegunju/rental_project/assets/21851358/e6679428-8385-4506-9a3f-3a2f3061fdf2"/>
-
+<img width="80%" src="https://github.com/leegunju/rental_project/assets/21851358/e6679428-8385-4506-9a3f-3a2f3061fdf2"/><br><br>
 <img width="80%" src="https://github.com/leegunju/rental_project/assets/21851358/95ac7e09-5801-41f0-b1be-105a687bc371"/>
 <img width="80%" src="https://github.com/leegunju/rental_project/assets/21851358/5365ba08-f86b-4edd-8193-ffae30f55c6a"/>
 <img width="80%" src="https://github.com/leegunju/rental_project/assets/21851358/cf1de7a6-30e1-4727-aabe-f5d979271e96"/>
